@@ -2,19 +2,24 @@ package com.brayanvanz.nosqlwebservices.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class User implements Serializable {
 
+    @Id
     private String id;
     private String name;
-    private String emai;
+    private String email;
 
     public User() {
     }
 
-    public User(String id, String name, String emai) {
+    public User(String id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.emai = emai;
+        this.email = email;
     }
 
     public String getId() {
@@ -33,12 +38,12 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getEmai() {
-        return emai;
+    public String getemail() {
+        return email;
     }
 
-    public void setEmai(String emai) {
-        this.emai = emai;
+    public void setemail(String email) {
+        this.email = email;
     }
 
     @Override
