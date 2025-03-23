@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.brayanvanz.nosqlwebservices.domain.Post;
 import com.brayanvanz.nosqlwebservices.domain.User;
+import com.brayanvanz.nosqlwebservices.dto.AuthorDTO;
 import com.brayanvanz.nosqlwebservices.repositories.PostRepository;
 import com.brayanvanz.nosqlwebservices.repositories.UserRepository;
 
@@ -33,10 +34,11 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, LocalDate.parse("21/03/2018", fmt), "Excited to travel", "I will go on a trip abroad!", maria);
-        Post post2 = new Post(null, LocalDate.parse("23/03/2018", fmt), "Good Morning", "I woke up feeling good today :)", maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, LocalDate.parse("21/03/2018", fmt), "Excited to travel", "I will go on a trip abroad!", new AuthorDTO(maria));
+        Post post2 = new Post(null, LocalDate.parse("23/03/2018", fmt), "Good Morning", "I woke up feeling good today :)", new AuthorDTO(maria));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
     }
 
